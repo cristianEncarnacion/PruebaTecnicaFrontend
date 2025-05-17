@@ -4,11 +4,13 @@ import { getClientesById } from "../Service/Clients"
 import type { Client } from "../Interfaces/Client.d"
 import BackButton from "../components/BackButton"
 import Header from '../views/Header'
+import { getDireccionesByClienteId } from "../Service/Direcciones"
 
 
 
 const viewClient = () => {
     const [viewClient, setViewClient] = useState<Client>()
+    const [addressClient, setAddressClient] = useState<{ id: string; direccion: string }[] | undefined>([])
     const { id } = useParams()
 
     useEffect(() => {
@@ -22,7 +24,16 @@ const viewClient = () => {
           console.error(error)
         }
         }
-
+        const fetchAddressClient = async () => {
+          try {
+         
+            const response= await getDireccionesByClienteId(id)
+            setAddressClient(response as { id: string; direccion: string }[])
+          } catch (error) {
+            console.error(error)
+          }
+          }
+          fetchAddressClient()
         fetchClientData()
     }, [])
     
@@ -106,6 +117,21 @@ const viewClient = () => {
           <span className="font-semibold text-[#0075C9]">Fecha de Nacimiento:</span>
           <span className="text-gray-800 font-medium">{viewClient?.fecha_nacimiento || ""}</span>
         </div>
+
+        {(addressClient ?? []).length > 0 ? (
+  <div className="flex justify-between items-center">
+    <span className="font-semibold text-[#0075C9]">Direcciones:</span>
+    <ul className="list-disc pl-5 mt-1">
+      {(addressClient ?? []).map((address) => (
+        <li key={address.id} className="text-gray-800 font-medium">
+          {address.direccion}
+        </li>
+      ))}
+    </ul>
+  </div>
+) : (
+  <p className="text-gray-500 italic">No hay direcciones registradas.</p>
+)}
       </div>
     </div>
   </div>
