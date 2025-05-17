@@ -3,9 +3,13 @@ const API="http://localhost:3000/clients"
 export const getClientes=async() :Promise<Client[]>=> {
     try {
         const response=await fetch(API)
+        if (!response.ok) {
+            throw new Error(`Error fetching clients: ${response.statusText}`);
+        }
         const data=await response.json()
         return data as Client[]
     } catch (error) {
+        console.error("Error in getClientes:", error);
         throw(error)
     }
 }

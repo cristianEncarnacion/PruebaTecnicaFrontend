@@ -1,5 +1,6 @@
 import BackButton from '../components/BackButton'
 import { addClient } from '../Service/Clients'
+import Header from '../views/Header'
 
 const AddClient = () => {
 
@@ -26,9 +27,10 @@ const AddClient = () => {
 
   return (
     <>
+    <Header />
    <form
   onSubmit={handleSubmit}
-  className="min-h-screen flex items-center justify-center bg-gray-100 px-4"
+  className="min-h-screen  flex items-center justify-center bg-gray-100 px-4"
 >
   <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
 

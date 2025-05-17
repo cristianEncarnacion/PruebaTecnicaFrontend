@@ -10,7 +10,7 @@ const Header = () => {
     }
 
   return (
-    <header className='flex justify-between items-center p-[10px] bg-white text-black'>
+    <header className='flex justify-between mb-5 items-center p-[10px] bg-white text-black'>
       <div className='font-bold'>Dominicana de Seguros</div>
       <div className='flex items-center gap-[10px]'>
         <span>{user ? user : ""}</span>

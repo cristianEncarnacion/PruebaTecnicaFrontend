@@ -1,15 +1,6 @@
 {
   "clients": [
     {
-      "id": "579f",
-      "nombre_completo": "cristian Encarnacion",
-      "cedula": "40218324422",
-      "fecha_nacimiento": "2025-05-17",
-      "sexo": "Masculino",
-      "estado_civil": "Soltero",
-      "nacionalidad": "Dominicana"
-    },
-    {
       "id": "c5c0",
       "nombre_completo": "Cristian Encarnacion",
       "cedula": "40218324422",
